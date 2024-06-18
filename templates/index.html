@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu da Fruteira</title>
+    <link rel="stylesheet" href="../static/bootstrap.css">
+</head>
+<body>
+    <h1>Menu da Fruteira</h1>
+    <ul>
+        <li><a href="{{ url_for('cadastrar_produto') }}">Cadastrar Produto</a></li>
+        <li><a href="{{ url_for('adicionar_estoque') }}">Adicionar Estoque</a></li>
+        <li><a href="{{ url_for('remover_estoque') }}">Remover Estoque</a></li>
+        <li><a href="{{ url_for('excluir_produto') }}">Excluir Produto</a></li>
+        <li><a href="{{ url_for('mostrar_estoque') }}">Mostrar Estoque</a></li>
+
+    </ul>
+</body>
+</html>

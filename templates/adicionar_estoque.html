@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu da Fruteira</title>
+    <link rel="stylesheet" href="../static/bootstrap.css">
+</head>
+<body>
+  
+
+    <table class="table table-striped table-responsive table-bordered">
+        <thead class="thead-default">
+
+            <h1>Estoque</h1>
+           <tr>
+              <th>Nome</th>
+              <th>Preço</th>
+              <th>Estoque Atual</th>
+              <th>Estoque Mínimo</th>
+              <th></th>
+           </tr>
+       </thead>
+       <tbody>
+           {% for fruta in frutas %}
+          <tr>
+             <td>{{fruta.nome}}</td>
+             <td>{{fruta.preco}}</td>
+             <td>{{fruta.estoque_atual}}</td>
+             <td>{{fruta.estoque_minimo}}</td>
+             <td><a href="{{ url_for('editar', id=fruta.id) }}">Editar</a>
+          </tr>
+          {% endfor %}
+          
+</body>
+</html>
