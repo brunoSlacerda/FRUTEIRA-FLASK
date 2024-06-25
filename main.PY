@@ -1,3 +1,4 @@
+#IMPORTAÇÃO DAS BIBLIOTECAS UTILIZADAS
 from flask import Flask, render_template, redirect, request, flash, url_for
 from flask_sqlalchemy import SQLAlchemy
 
@@ -10,6 +11,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
 
+#CRIA A CLASSE FRUTAS PARA PODER ENVIAR PARA O BANCO DE DADOS
 class Frutas(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     nome = db.Column(db.String(50), nullable=False)
@@ -19,14 +21,19 @@ class Frutas(db.Model):
 
     def __repr__(self):
         return '<Fruta %r>' % self.nome
+    
 
+# ---------- INDEX ----------
 @app.route('/')
 def index():
     return render_template('index.html')
 
+
+# ---------- CADASTRO DE PRODUTOS ----------
 @app.route('/cadastrar_produto', methods=['GET', 'POST'])
 def cadastrar_produto():
     if request.method == 'POST':
+        #PEGANDO AS INFORMAÇÕES DO FORMULARIO
         nome = request.form['nome']
         preco = request.form['preco']
         estoque_atual = request.form['estoque_atual']
@@ -47,23 +54,46 @@ def cadastrar_produto():
     # Se a requisição for GET, renderiza o formulário de cadastro
     return render_template('cadastrar_produto.html')
 
+
+
 @app.route('/adicionar_estoque')
 def adicionar_estoque():
     lista = Frutas.query.order_by(Frutas.id)
     return render_template('adicionar_estoque.html', frutas = lista)
 
-@app.route('/remover_estoque')
-def remover_estoque():
-    return render_template('remover_estoque.html')
+@app.route('/editar_estoque')
+def editar_estoque():
+    lista = Frutas.query.order_by(Frutas.id)
+    return render_template('editar_estoque.html', frutas = lista)
+
+@app.route('/edicao_produto/<int:id>')
+def edicao_produto(id):
+    frutas = Frutas.query.filter_by(id=id).first()
+    return render_template('edicao_produto.html', frutas = frutas)
+
 
 @app.route('/excluir_produto')
 def excluir_produto():
-    return render_template('excluir_produto.html')
+    lista = Frutas.query.order_by(Frutas.id)
+    return render_template('excluir_produto.html', frutas = lista)
+
+@app.route('/removendo/<int:id>')
+def removendo(id):
+    frutas = Frutas.query.filter_by(id=id).first()
+    return render_template('removendo.html', frutas = frutas)
+
+@app.route('/removeu/<int:id>', methods=['POST'])
+def removeu(id):
+    fruta = Frutas.query.get_or_404(id)
+    db.session.delete(fruta)
+    db.session.commit()
+    flash('Fruta excluída com sucesso!')
+    return redirect(url_for('index'))
+
 
 @app.route('/mostrar_estoque')
 def mostrar_estoque():
     lista = Frutas.query.order_by(Frutas.id)
-    
     return render_template('mostrar_estoque.html', frutas = lista)
 
 @app.route('/editar/<int:id>')
@@ -71,9 +101,27 @@ def editar(id):
     frutas = Frutas.query.filter_by(id=id).first()
     return render_template('editar.html', frutas = frutas)
 
-@app.route('/atualizar')
+@app.route('/atualizar',methods=['POST',])
 def atualizar():
-    pass
+    fruta = Frutas.query.filter_by(id=request.form['id']).first()
+    fruta.estoque_atual = request.form ['estoque_atual']
+    
+
+    db.session.add(fruta)
+    db.session.commit()
+    return redirect( url_for ('index'))
+
+@app.route('/atualizar2',methods=['POST',])
+def atualizar2():
+    fruta = Frutas.query.filter_by(id=request.form['id']).first()
+    fruta.preco = request.form ['preco']
+    fruta.estoque_minimo = request.form['estoque_minimo']
+
+    db.session.add(fruta)
+    db.session.commit()
+    return redirect( url_for ('index'))
+
+
 
 
 # ----- INSTANCIA O SERVIDOR FLASK -----

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Excluir Fruta</title>
+    <link rel="stylesheet" href="../static/bootstrap.css">
+</head>
+<body>
+    <h1>Excluir Fruta</h1>
+    <form action="{{ url_for('removeu', id=frutas.id) }}" method="post">
+        <p>Tem certeza de que deseja excluir a fruta <strong>{{ frutas.nome }}</strong>?</p>
+        <input type="hidden" name="id" value="{{ frutas.id }}">
+        <button type="submit" class="btn btn-danger">Excluir</button>
+        <a href="{{ url_for('mostrar_estoque') }}" class="btn btn-secondary">Cancelar</a>
+    </form>
+</body>
+</html>

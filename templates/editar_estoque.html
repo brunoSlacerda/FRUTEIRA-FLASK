@@ -15,9 +15,10 @@
             <h1>Estoque</h1>
            <tr>
               <th>Nome</th>
-              <th>Preço/KG</th>
+              <th>Preço</th>
               <th>Estoque Atual</th>
               <th>Estoque Mínimo</th>
+              <th></th>
            </tr>
        </thead>
        <tbody>
@@ -27,9 +28,9 @@
              <td>{{fruta.preco}}</td>
              <td>{{fruta.estoque_atual}}</td>
              <td>{{fruta.estoque_minimo}}</td>
+             <td><a href="{{ url_for('edicao_produto', id=fruta.id) }}">Editar</a>
           </tr>
           {% endfor %}
           <a href="/">Voltar ao Menu</a>
-          
 </body>
 </html>
