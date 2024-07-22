@@ -127,3 +127,8 @@ def atualizar2():
 # ----- INSTANCIA O SERVIDOR FLASK -----
 if __name__ == '__main__':
     app.run(debug=True)
+
+
+
+
+

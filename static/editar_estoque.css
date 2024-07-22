@@ -1,0 +1,141 @@
+/* estilos_estoque.css */
+
+/* Definições básicas */
+body {
+    font-family: 'Arial', sans-serif;
+    background: url('https://images.unsplash.com/photo-1557081285-7ea5c9efb1c1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDJ8fGZydWl0c3xlbnwwfHx8fDE2ODY1MzA1OTM&ixlib=rb-1.2.1&q=80&w=1080') no-repeat center center fixed;
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Efeito de fundo sobre a imagem */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.85); /* Torna o fundo mais claro para destacar o texto */
+    z-index: -2;
+}
+
+/* Estilização do título */
+h1 {
+    text-align: center;
+    color: #388e3c;
+    margin: 20px 0;
+    font-size: 2em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+h1::before,
+h1::after {
+    content: '';
+    display: block;
+    width: 48px; /* Tamanho das imagens de frutas */
+    height: 48px;
+    background-size: cover;
+    margin: 0 10px;
+}
+
+h1::before {
+    background-image: url('https://img.icons8.com/color/48/000000/banana.png'); /* Imagem de banana */
+}
+
+h1::after {
+    background-image: url('https://img.icons8.com/color/48/000000/orange.png'); /* Imagem de laranja */
+}
+
+/* Estilização da tabela */
+.table {
+    width: 90%;
+    max-width: 1000px;
+    margin: 20px auto;
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-collapse: collapse;
+}
+
+.table th, .table td {
+    padding: 15px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+.table th {
+    background-color: #388e3c;
+    color: white;
+    font-weight: bold;
+}
+
+.table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.table tr:hover {
+    background-color: #e0e0e0;
+}
+
+/* Link de edição */
+.table a {
+    text-decoration: none;
+    color: #388e3c;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.table a:hover {
+    color: #66bb6a;
+}
+
+/* Link de voltar */
+a {
+    display: block;
+    text-align: center;
+    margin: 20px auto;
+    text-decoration: none;
+    color: #388e3c;
+    transition: color 0.3s;
+}
+
+a:hover {
+    color: #66bb6a;
+}
+
+/* Adição de imagens de frutas nas bordas */
+.bordas {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.bordas img {
+    position: absolute;
+    width: 50px; /* Ajuste o tamanho conforme necessário */
+    height: auto;
+    opacity: 0.8; /* Torna as imagens um pouco transparentes */
+}
+
+.bordas .fruta1 { top: 10px; left: 10px; }
+.bordas .fruta2 { top: 10px; right: 10px; }
+.bordas .fruta3 { bottom: 10px; left: 10px; }
+.bordas .fruta4 { bottom: 10px; right: 10px; }
+
+/* Estilização responsiva */
+@media (max-width: 768px) {
+    .table {
+        width: 95%;
+    }
+}

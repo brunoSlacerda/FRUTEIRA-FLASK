@@ -1,0 +1,80 @@
+/* estilos.css */
+
+/* Definições básicas */
+body {
+    font-family: 'Arial', sans-serif;
+    background: url('https://images.unsplash.com/photo-1557081285-7ea5c9efb1c1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDJ8fGZydWl0c3xlbnwwfHx8fDE2ODY1MzA1OTM&ixlib=rb-1.2.1&q=80&w=1080') no-repeat center center fixed;
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    position: relative;
+    overflow: hidden;
+}
+
+
+
+/* Estilização do título */
+h1 {
+    text-align: center;
+    color: #388e3c;
+    margin: 20px 0;
+    font-size: 2.5em;
+    background: rgba(255, 255, 255, 0.85);
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilização da lista de navegação */
+ul {
+    list-style: none;
+    padding: 0;
+    width: 90%;
+    max-width: 400px;
+    margin: 20px auto;
+    background-color: rgba(255, 255, 255, 0.85);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+ul li {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+}
+
+ul li:last-child {
+    border-bottom: none;
+}
+
+ul li a {
+    text-decoration: none;
+    color: #388e3c;
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+ul li a:hover {
+    background-color: #66bb6a;
+    color: white;
+    transform: scale(1.05);
+}
+
+ul li a img {
+    margin-right: 10px;
+    width: 24px;
+    height: 24px;
+}
+
+
+/* Estilização responsiva */
+@media (max-width: 768px) {
+    ul {
+        width: 90%;
+    }
+}

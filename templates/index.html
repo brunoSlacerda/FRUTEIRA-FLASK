@@ -4,17 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Menu da Fruteira</title>
-    <link rel="stylesheet" href="../static/bootstrap.css">
+    <link rel="stylesheet" href="../static/index.css">
 </head>
 <body>
     <h1>Menu da Fruteira</h1>
     <ul>
-        <li><a href="{{ url_for('cadastrar_produto') }}">Cadastrar Produto</a></li>
-        <li><a href="{{ url_for('adicionar_estoque') }}">Adicionar/Remover Estoque</a></li>
-        <li><a href="{{ url_for('editar_estoque') }}">Editar Produto</a></li>
-        <li><a href="{{ url_for('excluir_produto') }}">Excluir Produto</a></li>
-        <li><a href="{{ url_for('mostrar_estoque') }}">Mostrar Estoque</a></li>
-
+        <li><a href="{{ url_for('cadastrar_produto') }}">
+            <img src="https://img.icons8.com/color/48/000000/add--v1.png" alt="Cadastrar Produto">
+            Cadastrar Produto
+        </a></li>
+        <li><a href="{{ url_for('adicionar_estoque') }}">
+            <img src="https://img.icons8.com/color/48/000000/plus--v1.png" alt="Adicionar Estoque">
+            Adicionar/Remover Estoque
+        </a></li>
+        <li><a href="{{ url_for('editar_estoque') }}">
+            <img src="https://img.icons8.com/color/48/000000/edit--v1.png" alt="Editar Produto">
+            Editar Produto
+        </a></li>
+        <li><a href="{{ url_for('excluir_produto') }}">
+            <img src="https://img.icons8.com/color/48/000000/delete--v1.png" alt="Excluir Produto">
+            Excluir Produto
+        </a></li>
+        <li><a href="{{ url_for('mostrar_estoque') }}">
+            <img src="https://img.icons8.com/color/48/000000/visible--v1.png" alt="Mostrar Estoque">
+            Mostrar Estoque
+        </a></li>
     </ul>
+    
 </body>
 </html>
