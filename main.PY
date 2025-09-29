@@ -7,7 +7,6 @@ app = Flask(__name__)
 app.secret_key = '1234'
 
 # Configuração do banco de dados MySQL
-import os
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', 'postgresql://user:password@localhost/dbname')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
